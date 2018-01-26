@@ -31,5 +31,6 @@ addons:
     project:
       name: "blackducksoftware/integration-common"
     notification_email: ekerwin@blackducksoftware.com
-    build_command:   "./gradlew build"
+    build_command_prepend: rm -rf ./build
+    build_command: ./gradlew build --no-daemon
     branch_pattern: coverity_scan
