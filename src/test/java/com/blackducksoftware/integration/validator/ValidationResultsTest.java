@@ -206,12 +206,7 @@ public class ValidationResultsTest {
         results.addResult(TestField.HUBURL, result2);
         results.addResult(TestField.SCANTARGET, result2);
 
-        final String e = results.getAllResultString();
-        System.out.println(expected);
-        System.out.println();
-        System.out.println(e);
         assertEquals(expected, results.getAllResultString());
-
     }
 
     @Test

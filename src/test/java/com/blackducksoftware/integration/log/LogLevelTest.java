@@ -21,6 +21,7 @@
  *******************************************************************************/
 package com.blackducksoftware.integration.log;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
@@ -81,4 +82,10 @@ public class LogLevelTest {
         assertTrue(LogLevel.TRACE.isLoggable(LogLevel.TRACE));
     }
 
+    @Test
+    public void testFromString() {
+        assertEquals(LogLevel.OFF, LogLevel.fromString("off"));
+        assertEquals(LogLevel.INFO, LogLevel.fromString("pants"));
+        assertEquals(LogLevel.INFO, LogLevel.fromString(null));
+    }
 }

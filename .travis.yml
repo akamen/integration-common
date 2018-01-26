@@ -3,6 +3,12 @@ language: java
 jdk:
   - oraclejdk8
 
+env:
+  global:
+   # The next declaration is the encrypted COVERITY_SCAN_TOKEN, created
+   #   via the "travis encrypt" command using the project repo's public key
+   - secure: "JG/hI7yghjSoOBf+2s8v5kcAwh5yllR9oajMkARwxrwVbHxnFlDnOFobvAm5aaRBqlotCuUTuxCYjj3oj/KUWmE10Xem2kiVkEAziyH0DXIHbOCij437x4qkoggvy0WqxnisCFphycxayWZsrFqPiDsjK6jetIFaH3DF9cxve9b8WAOt6PA5/GMuA2IN0is9omSK+rFn9B2frMVxnQ5uIW5iggu78lWDuttBUR7eI1iW/WwQIruKGbMMat2S3G0jLFgSajRMoen50xA1dH2oFk7oPKomkJeq4QE9db4UO0iwvKWetNJOiPGwCRbAeMdqa64ZZYSeZS7+U83BueOKOMm9dj5SaNbq69NooTYec8pUvcAe/46Vg8cp7fsXX56i2c20K8bUe+epASBp4wfHbcLwoveNgMmL1Y+PqbDBc40GP/2lTNTnF/Q3YfYwhRSE9nsLoB0Key5fUmmjWXhvkanulfzHwZVoIqKzmTnTwL/8ayHz/RCUrhyFYxIrRIYq4f+WYf/wVXBhe5nPYa27bTzIw1BxEy7WOh8INbsbu5DG+KtZmdoqyDtRqhuIaEgm401FAvalyssO6p9jouU6LQKPX2fIeOBvrGAHRG+HPicZQZnKQfKx0VhZP+lJ1maOLbaEMnnnixRWx4HzegkjhQO9R7m8bklSUomngmaqChw="
+
 notifications:
   email:
     recipients:
@@ -19,3 +25,11 @@ script:
 after_success:
   - ./gradlew test jacocoTestReport coveralls
   - bash <(curl -s https://copilot.blackducksoftware.com/ci/travis/scripts/upload)
+
+addons:
+  coverity_scan:
+    project:
+      name: "blackducksoftware/integration-common"
+    notification_email: ekerwin@blackducksoftware.com
+    build_command:   "./gradlew build"
+    branch_pattern: coverity_scan

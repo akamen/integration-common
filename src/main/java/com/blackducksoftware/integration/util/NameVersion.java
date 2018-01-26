@@ -31,12 +31,12 @@ public class NameVersion extends Stringable {
     }
 
     public NameVersion(final String name, final String version) {
-        this.name = name;
-        this.version = version;
+        setName(name);
+        setVersion(version);
     }
 
     public NameVersion(final String name) {
-        this.name = name;
+        setName(name);
     }
 
     public String getName() {
