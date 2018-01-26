@@ -37,7 +37,7 @@ public class PrintStreamIntLoggerTest {
         assertEquals(LogLevel.ERROR, logger.getLogLevel());
 
         logger.error("error one");
-        assertEquals("error one", getPrintStreamContent());
+        assertEquals("ERROR: error one\n", getPrintStreamContent());
     }
 
     @Test
